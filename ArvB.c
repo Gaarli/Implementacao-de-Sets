@@ -10,8 +10,8 @@ typedef struct No NO;
 struct No
 {
   int chave;
-  NO *left;
-  NO *right;
+  NO *esq;
+  NO *dir;
 };
 
 struct ArvB
@@ -47,8 +47,8 @@ NO *arvB_cria_no(int chave)
   if (new_no != NULL)
   {
     new_no->chave = chave;
-    new_no->left = NULL;
-    new_no->right = NULL;
+    new_no->esq = NULL;
+    new_no->dir = NULL;
     return new_no;
   }
 }
@@ -64,11 +64,11 @@ NO *inserir_no(NO *raiz, int chave)
   {
     if (chave < raiz->chave)
     {
-      raiz->left = inserir_no(raiz->left, chave);
+      raiz->esq = inserir_no(raiz->esq, chave);
     }
     else if (chave > raiz->chave)
     {
-      raiz->right = inserir_no(raiz->right, chave);
+      raiz->dir = inserir_no(raiz->dir, chave);
     }
 
     return raiz;
@@ -87,9 +87,9 @@ bool busca_no(NO *raiz, int chave)
   while (raiz != NULL)
   {
     if (chave < raiz->chave)
-      raiz = raiz->left;
+      raiz = raiz->esq;
     else if (chave > raiz->chave)
-      raiz = raiz->right;
+      raiz = raiz->dir;
     else
       return true;
   }
@@ -104,9 +104,9 @@ void arvB_EmOrdem(NO *raiz)
 {
   if (raiz != NULL)
   {
-    arvB_EmOrdem(raiz->left);
+    arvB_EmOrdem(raiz->esq);
     printf(" [%d] ", raiz->chave);
-    arvB_EmOrdem(raiz->right);
+    arvB_EmOrdem(raiz->dir);
   }
 }
 void arvB_PreOrdem(NO *raiz)
@@ -114,16 +114,16 @@ void arvB_PreOrdem(NO *raiz)
   if (raiz != NULL)
   {
     printf(" [%d] ", raiz->chave);
-    arvB_PreOrdem(raiz->left);
-    arvB_PreOrdem(raiz->right);
+    arvB_PreOrdem(raiz->esq);
+    arvB_PreOrdem(raiz->dir);
   }
 }
 void arvB_PosOrdem(NO *raiz)
 {
   if (raiz != NULL)
   {
-    arvB_PosOrdem(raiz->left);
-    arvB_PosOrdem(raiz->right);
+    arvB_PosOrdem(raiz->esq);
+    arvB_PosOrdem(raiz->dir);
     printf(" [%d] ", raiz->chave);
   }
 }
