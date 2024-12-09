@@ -2,6 +2,8 @@
 #define SET_H
 #include <stdbool.h>
 #include "avl.h"
+#include "LLRBT.h"
+
 typedef struct set_ SET;
 
 SET *set_criar(int estrutura);
