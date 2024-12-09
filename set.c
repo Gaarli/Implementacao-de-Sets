@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include "set.h"
 #include "avl.h"
-#include "LLRBT.h"
-
 #define AVL_TREE 1
+
 struct set_
 {
   AVL *avl_tree;
-  LLRBT *rubro;
   int tipo;
 };
 
@@ -21,6 +19,9 @@ SET *set_criar(int estrutura)
     {
       set->tipo = estrutura;
       set->avl_tree = avl_criar();
+    }
+    else
+    {
     }
     return set;
   }
