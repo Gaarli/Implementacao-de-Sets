@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "set.h"
-#include "ArvB.h"
+#include "avl.h"
 
 int main()
 {
 
   int num;
-  ARVB *arvB;
   SET *setA;
   SET *setB;
 

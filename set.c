@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "set.h"
-#include "ArvB.h"
-#define ARVBIN 1
+#include "avl.h"
+#define AVL_TREE 1
 struct set_
 {
-  ARVB *conjunto_arvB;
+  AVL *avl_tree;
+
   int tipo;
 };
 
@@ -14,10 +15,10 @@ SET *set_criar(int estrutura)
   SET *set = (SET *)malloc(sizeof(SET));
   if (set != NULL)
   {
-    if (estrutura == ARVBIN)
+    if (estrutura == 1)
     {
       set->tipo = estrutura;
-      set->conjunto_arvB = arvB_criar();
+      set->avl_tree = avl_criar();
     }
     return set;
   }
@@ -34,14 +35,14 @@ void set_inserir_elemento(SET *conjunto, int chave)
 {
   if (conjunto != NULL)
   {
-    arvB_inserir(conjunto->conjunto_arvB, chave);
+    arvB_inserir(conjunto->avl_tree, chave);
   }
 }
 void set_imprimir(SET *conjuntO)
 {
   if (conjuntO != NULL)
   {
-    arvB_percurso(conjuntO->conjunto_arvB, 1);
+    arvB_percurso(conjuntO->avl_tree, 1);
   }
 }
 
@@ -49,7 +50,7 @@ void set_pertence(SET *set, int chave)
 {
   if (set != NULL)
   {
-    if (arvB_busca(set->conjunto_arvB, chave))
+    if (arvB_busca(set->avl_tree, chave))
     {
       printf("\nPertence\n");
     }
